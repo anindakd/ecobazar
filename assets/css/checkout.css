@@ -1,0 +1,355 @@
+/* =====================================================
+   ECOBAZAR – CHECKOUT PAGE STYLES (checkout.html)
+   Loaded after style.css + category.css + cart.css.
+   Mobile rules are in responsive.css
+   ===================================================== */
+
+/* ---------- 1. Layout ---------- */
+.checkout {
+    padding: 36px 0 60px;
+}
+
+.checkout-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 32px;
+    align-items: start;
+}
+
+.co-title {
+    margin-bottom: 18px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.co-title.extra {
+    margin-top: 26px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+.co-sub {
+    margin-bottom: 12px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* ---------- 2. Form fields ---------- */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 14px 16px;
+}
+
+.span-2 { grid-column: span 2; }
+.span-3 { grid-column: span 3; }
+.span-6 { grid-column: span 6; }
+
+.field label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 12px;
+    color: var(--text);
+}
+
+.field label span {
+    color: var(--muted);
+}
+
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    outline: 0;
+    background: var(--surface);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 12px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: var(--muted);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(0, 178, 7, 0.12);
+}
+
+.field select {
+    padding-right: 34px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23808080' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.field select:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.field textarea {
+    resize: vertical;
+}
+
+/* Error state (added by checkout.js) */
+.field.invalid input,
+.field.invalid select {
+    border-color: var(--red);
+}
+
+.field-error {
+    display: none;
+    margin-top: 4px;
+    font-size: 11px;
+    color: var(--red);
+}
+
+.field.invalid .field-error {
+    display: block;
+}
+
+.check-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--text-soft);
+    cursor: pointer;
+}
+
+.check-row input {
+    width: 15px;
+    height: 15px;
+    accent-color: var(--green);
+}
+
+.ship-box {
+    margin-top: 18px;
+    padding: 18px;
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    animation: fadeIn 0.3s;
+}
+
+/* ---------- 3. Order summary ---------- */
+.order-summary {
+    position: sticky;
+    top: 90px;
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+}
+
+.order-summary h3 {
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.summary-items {
+    margin-bottom: 8px;
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 12px;
+}
+
+.summary-item img {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    flex: none;
+}
+
+.summary-item .name {
+    flex: 1;
+    min-width: 0;
+}
+
+.summary-item .name a:hover {
+    color: var(--green);
+}
+
+.summary-item .name small {
+    color: var(--muted);
+}
+
+.summary-item b {
+    font-weight: 500;
+}
+
+.order-summary .total-row {
+    padding: 11px 0;
+}
+
+.pay-title {
+    margin-top: 22px;
+}
+
+/* Payment radio buttons */
+.pay-list {
+    display: grid;
+    gap: 10px;
+}
+
+.pay-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: var(--text-soft);
+    cursor: pointer;
+}
+
+.pay-option input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--green);
+}
+
+.pay-option:has(input:checked) {
+    color: var(--text);
+}
+
+.pay-note {
+    min-height: 18px;
+    margin: 10px 0 14px;
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--muted);
+}
+
+.place-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 40px;
+    background: var(--green);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.place-btn:hover:not(:disabled) {
+    background: var(--green-dark);
+}
+
+.place-btn:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+/* ---------- 4. Order placed (confirmation) ---------- */
+.order-done {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    animation: fadeIn 0.4s;
+}
+
+.done-icon {
+    width: 72px;
+    height: 72px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: var(--green);
+    color: #fff;
+    font-size: 36px;
+    animation: popIn 0.5s ease;
+}
+
+.order-done h2 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.done-sub {
+    margin: 6px 0 24px;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.done-sub b {
+    color: var(--text);
+    font-weight: 500;
+}
+
+.done-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 18px;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+}
+
+.done-grid small {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.done-grid b {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.done-box {
+    margin-bottom: 14px;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    text-align: left;
+}
+
+.done-box h4 {
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.done-box p {
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--text-soft);
+}
+
+.done-box .summary-item {
+    border-bottom: 1px solid var(--border);
+}
+
+.done-box .summary-item:last-child {
+    border-bottom: 0;
+}
+
+.done-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+}

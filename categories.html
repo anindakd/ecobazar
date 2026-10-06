@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Categories – Ecobazar</title>
+
+    <!-- Dark mode: set the saved theme before the page is drawn (no white flash) -->
+    <script>
+        (function () {
+            var theme = null;
+
+            try { theme = JSON.parse(localStorage.getItem('ecoTheme')); } catch (error) { }
+
+            if (!theme) {
+                theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/category.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/icons.css">
+    <link rel="stylesheet" href="assets/css/dark.css">
+</head>
+
+<body>
+
+    <!-- ============ TOP BAR ============ -->
+    <div class="topbar topbar-light">
+        <div class="container topbar-inner">
+            <span><svg class="ic" aria-hidden="true"><use href="#i-map-pin"/></svg> Store Location: Lincoln- 344, Illinois, Chicago, USA</span>
+
+            <div class="topbar-right">
+                <span>Eng <svg class="ic" aria-hidden="true"><use href="#i-chevron-down"/></svg></span>
+                <span>USD <svg class="ic" aria-hidden="true"><use href="#i-chevron-down"/></svg></span>
+                <span id="authLinks">
+                    <a href="#" id="signinLink">Sign In</a> /
+                    <a href="#" id="signupLink">Sign Up</a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ HEADER ============ -->
+    <header class="header" id="header">
+        <div class="container header-inner">
+
+            <!-- Hamburger (mobile only) -->
+            <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <a href="index.html" class="logo"><svg class="ic" aria-hidden="true"><use href="#i-leaf"/></svg> Eco<b>bazar</b></a>
+
+            <!-- Search box (click opens the search popup) -->
+            <div class="search-box" id="openSearch">
+                <span class="search-text"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg> Search</span>
+                <button type="button">Search</button>
+            </div>
+
+            <div class="header-icons">
+                <button class="icon-btn theme-btn" id="themeBtn" aria-label="Switch to dark mode" title="Dark / Light mode" role="switch" aria-checked="false"><span class="theme-track"><span class="theme-knob"><svg class="ic sun" aria-hidden="true"><use href="#i-sun"/></svg><svg class="ic moon" aria-hidden="true"><use href="#i-moon"/></svg></span></span></button>
+                <button class="icon-btn search-icon" id="openSearchIcon" aria-label="Search"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg></button>
+                <a href="wishlist.html" class="icon-btn wish-link" aria-label="Wishlist">
+                    <svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg><i class="cart-count" id="wishCount" hidden>0</i>
+                </a>
+
+                <a href="cart.html" class="cart" aria-label="Shopping cart">
+                    <span class="cart-icon"><svg class="ic" aria-hidden="true"><use href="#i-cart"/></svg><i class="cart-count" id="cartCount">0</i></span>
+                    <div class="cart-text">
+                        Shopping cart:
+                        <b id="cartTotal">$0.00</b>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ NAVBAR (desktop) ============ -->
+    <nav class="navbar navbar-light">
+        <div class="container navbar-inner">
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home <svg class="ic" aria-hidden="true"><use href="#i-chevron-down"/></svg></a></li>
+                <li><a href="categories.html" class="active">Shop <svg class="ic" aria-hidden="true"><use href="#i-chevron-down"/></svg></a></li>
+                <li><a href="#">Pages <svg class="ic" aria-hidden="true"><use href="#i-chevron-down"/></svg></a></li>
+                <li><a href="#">Blog <svg class="ic" aria-hidden="true"><use href="#i-chevron-down"/></svg></a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+
+            <span class="nav-phone"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg> (219) 555-0114</span>
+        </div>
+    </nav>
+
+    <!-- ============ MOBILE DRAWER (left side popup) ============ -->
+    <div class="overlay" id="drawerOverlay"></div>
+
+    <aside class="drawer" id="drawer">
+        <div class="drawer-head">
+            <a href="index.html" class="logo"><svg class="ic" aria-hidden="true"><use href="#i-leaf"/></svg> Eco<b>bazar</b></a>
+            <button class="drawer-close" id="drawerClose" aria-label="Close menu"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button>
+        </div>
+
+        <ul class="drawer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="categories.html" class="active">Shop</a></li>
+            <li><a href="#">Pages</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+
+            <!-- All Categories accordion -->
+            <li class="drawer-cat">
+                <button class="drawer-cat-btn" id="drawerCatBtn">
+                    <span>All Categories</span>
+                    <span class="arrow"><svg class="ic" aria-hidden="true"><use href="#i-chevron-down"/></svg></span>
+                </button>
+                <ul class="drawer-cat-list" id="drawerCats"></ul>
+            </li>
+        </ul>
+
+        <div class="drawer-bottom">
+            <button class="btn-green" id="drawerSignin">Sign In</button>
+            <button class="btn-outline" id="drawerSignup">Sign Up</button>
+            <p><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg> (219) 555-0114</p>
+        </div>
+    </aside>
+
+    <!-- ============ PAGE BANNER + BREADCRUMB ============ -->
+    <section class="page-banner">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg></a>
+                <span><svg class="ic" aria-hidden="true"><use href="#i-chevron-right"/></svg></span>
+                <a href="categories.html">Categories</a>
+                <span><svg class="ic" aria-hidden="true"><use href="#i-chevron-right"/></svg></span>
+                <b id="crumbCurrent">Vegetables</b>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SHOP ============ -->
+    <section class="shop">
+        <div class="container">
+
+            <!-- Top row: filter button, sort, result count -->
+            <div class="shop-top">
+                <button class="filter-btn" id="filterBtn">Filter <svg class="ic" aria-hidden="true"><use href="#i-sliders"/></svg></button>
+
+                <div class="sort-box">
+                    <label for="sortSelect">Sort by:</label>
+                    <select id="sortSelect">
+                        <option value="latest">Latest</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Top Rated</option>
+                        <option value="name">Name: A to Z</option>
+                    </select>
+                </div>
+
+                <div class="result-count">
+                    <button class="clear-btn" id="clearBtn" hidden>Clear filters</button>
+                    <span><b id="resultCount">0</b> Results Found</span>
+                </div>
+            </div>
+
+            <div class="shop-layout" id="shopLayout">
+
+                <!-- ----- Sidebar ----- -->
+                <div class="filter-overlay" id="filterOverlay"></div>
+
+                <aside class="sidebar" id="sidebar">
+
+                    <div class="sidebar-head">
+                        <b>Filters</b>
+                        <button id="sidebarClose" aria-label="Close filters"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button>
+                    </div>
+
+                    <!-- All Categories -->
+                    <div class="side-box">
+                        <h5 class="side-title">All Categories <span><svg class="ic" aria-hidden="true"><use href="#i-chevron-up"/></svg></span></h5>
+                        <ul class="side-body cat-list" id="categoryList"></ul>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="side-box">
+                        <h5 class="side-title">Price <span><svg class="ic" aria-hidden="true"><use href="#i-chevron-up"/></svg></span></h5>
+                        <div class="side-body">
+                            <div class="range">
+                                <div class="range-track"><div class="range-fill" id="rangeFill"></div></div>
+                                <input type="range" id="priceMin" min="0" max="40" value="0">
+                                <input type="range" id="priceMax" min="0" max="40" value="40">
+                            </div>
+                            <p class="price-label">Price: <b id="priceLabel">$0 — $40</b></p>
+                        </div>
+                    </div>
+
+                    <!-- Rating -->
+                    <div class="side-box">
+                        <h5 class="side-title">Rating <span><svg class="ic" aria-hidden="true"><use href="#i-chevron-up"/></svg></span></h5>
+                        <div class="side-body rating-list" id="ratingList">
+                            <label><input type="checkbox" value="5"> <span class="stars"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span> 5.0</label>
+                            <label><input type="checkbox" value="4"> <span class="stars"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><i><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></i></span> 4.0 &amp; up</label>
+                            <label><input type="checkbox" value="3"> <span class="stars"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><i><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></i></span> 3.0 &amp; up</label>
+                            <label><input type="checkbox" value="2"> <span class="stars"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><i><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></i></span> 2.0 &amp; up</label>
+                            <label><input type="checkbox" value="1"> <span class="stars"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><i><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></i></span> 1.0 &amp; up</label>
+                        </div>
+                    </div>
+
+                    <!-- Popular Tag -->
+                    <div class="side-box">
+                        <h5 class="side-title">Popular Tag <span><svg class="ic" aria-hidden="true"><use href="#i-chevron-up"/></svg></span></h5>
+                        <div class="side-body tag-list" id="tagList"></div>
+                    </div>
+
+                    <!-- Discount banner -->
+                    <div class="discount-box">
+                        <div class="discount-text">
+                            <h3><b>79%</b> Discount</h3>
+                            <p>on your first order</p>
+                            <a href="#" id="discountBtn">Shop Now <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+                        </div>
+                        <img src="assets/images/discount-banner.jpg" alt="Fresh vegetables">
+                    </div>
+
+                    <!-- Sale products -->
+                    <div class="side-box">
+                        <h5 class="side-title plain">Sale Products</h5>
+                        <div class="sale-list" id="saleList"></div>
+                    </div>
+
+                </aside>
+
+                <!-- ----- Products ----- -->
+                <div class="shop-main">
+                    <div class="shop-grid" id="shopGrid"></div>
+                    <nav class="pagination" id="pagination" aria-label="Pagination"></nav>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ NEWSLETTER BAND ============ -->
+    <section class="news-band">
+        <div class="container news-band-inner">
+            <div class="news-band-text">
+                <h4>Subcribe our Newsletter</h4>
+                <p>Pellentesque eu nibh eget mauris congue mattis mattis nec tellus. Phasellus imperdiet elit eu magna.</p>
+            </div>
+
+            <div class="news-band-right">
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+
+                <div class="social social-light">
+                    <a href="#" class="on">f</a>
+                    <a href="#">t</a>
+                    <a href="#">p</a>
+                    <a href="#">in</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer footer-dark">
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-about">
+                    <a href="index.html" class="logo"><svg class="ic" aria-hidden="true"><use href="#i-leaf"/></svg> Eco<b>bazar</b></a>
+                    <p>Morbi cursus porttitor enim lobortis molestie. Duis gravida turpis dui, eget bibendum magna congue nec.</p>
+                    <p class="footer-contact">(219) 555-0114 &nbsp; or &nbsp; Proxy@gmail.com</p>
+                </div>
+
+                <div>
+                    <h5>My Account</h5>
+                    <ul>
+                        <li>My Account</li>
+                        <li>Order History</li>
+                        <li><a href="cart.html">Shoping Cart</a></li>
+                        <li><a href="wishlist.html">Wishlist</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5>Helps</h5>
+                    <ul>
+                        <li>Contact</li>
+                        <li>Faqs</li>
+                        <li>Terms &amp; Condition</li>
+                        <li>Privacy Policy</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5>Proxy</h5>
+                    <ul>
+                        <li>About</li>
+                        <li>Shop</li>
+                        <li>Product</li>
+                        <li>Track Order</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5>Categories</h5>
+                    <ul>
+                        <li>Fruit &amp; Vegetables</li>
+                        <li>Meat &amp; Fish</li>
+                        <li>Bread &amp; Bakery</li>
+                        <li>Beauty &amp; Health</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <span>Ecobazar eCommerce © 2021. All Rights Reserved</span>
+                <span>Apple Pay · VISA · Discover · Mastercard</span>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- ============ SEARCH POPUP ============ -->
+    <div class="modal-bg" id="searchModal">
+        <div class="search-modal">
+
+            <div class="search-input-row">
+                <span><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg></span>
+                <input type="text" id="searchInput" placeholder="Search for fruits, vegetables, meat..." autocomplete="off">
+                <button type="button" id="searchGo">Search</button>
+            </div>
+
+            <button class="modal-close" id="searchClose">Close (Esc)</button>
+
+            <div id="trendingBox">
+                <h6><svg class="ic" aria-hidden="true"><use href="#i-flame"/></svg> Trending searches</h6>
+                <div class="chips" id="trendingList"></div>
+            </div>
+
+            <h6 id="suggestTitle">Suggested for you</h6>
+            <div class="suggest-grid" id="suggestList"></div>
+
+        </div>
+    </div>
+
+    <!-- ============ SIGN IN / SIGN UP POPUP ============ -->
+    <div class="modal-bg" id="authModal">
+        <div class="auth-modal">
+
+            <button class="modal-x" id="authClose" aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button>
+
+            <a href="#" class="logo logo-center"><svg class="ic" aria-hidden="true"><use href="#i-leaf"/></svg> Eco<b>bazar</b></a>
+
+            <div class="auth-tabs">
+                <button id="tabSignin" class="active">Sign In</button>
+                <button id="tabSignup">Sign Up</button>
+            </div>
+
+            <form id="authForm" novalidate>
+
+                <label id="nameRow" hidden>
+                    Full name
+                    <input type="text" id="authName" placeholder="Your name">
+                </label>
+
+                <label>
+                    Email
+                    <input type="email" id="authEmail" placeholder="you@example.com">
+                </label>
+
+                <label>
+                    Password
+                    <span class="pass-wrap">
+                        <input type="password" id="authPass" placeholder="Min 6 characters">
+                        <button type="button" id="togglePass" aria-label="Show password"><svg class="ic" aria-hidden="true"><use href="#i-eye"/></svg></button>
+                    </span>
+                </label>
+
+                <div class="strength" id="strength" hidden>
+                    <i></i>
+                    <small></small>
+                </div>
+
+                <label id="confirmRow" hidden>
+                    Confirm password
+                    <input type="password" id="authConfirm" placeholder="Repeat password">
+                </label>
+
+                <div class="auth-row">
+                    <label class="check">
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#" id="forgotLink">Forgot password?</a>
+                </div>
+
+                <p class="auth-error" id="authError"></p>
+
+                <button type="submit" class="auth-submit" id="authSubmit">Sign In</button>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- ============ QUICK VIEW POPUP (eye button) ============ -->
+    <div class="modal-bg modal-center" id="quickModal">
+        <div class="quick-modal">
+
+            <button class="modal-x" id="quickClose" aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button>
+
+            <div class="quick-img">
+                <img id="quickImg" alt="">
+            </div>
+
+            <div class="quick-info">
+                <span class="quick-stock" id="quickStock">In Stock</span>
+                <h3 id="quickName"></h3>
+                <div class="stars" id="quickStars"></div>
+                <div class="quick-price" id="quickPrice"></div>
+                <p class="quick-cat" id="quickCat"></p>
+                <a class="quick-link" id="quickLink" href="#">View full details <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+
+                <div class="quick-buy">
+                    <div class="qty">
+                        <button type="button" id="qtyMinus">−</button>
+                        <span id="qtyValue">1</span>
+                        <button type="button" id="qtyPlus">+</button>
+                    </div>
+                    <button class="btn-green" id="quickAdd">Add to Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Toast message + Back to top -->
+    <div class="toast" id="toast"></div>
+    <button class="back-top" id="backTop" aria-label="Back to top"><svg class="ic" aria-hidden="true"><use href="#i-arrow-up"/></svg></button>
+
+    <!-- JavaScript -->
+    <script src="assets/js/icons.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/category.js"></script>
+</body>
+
+</html>

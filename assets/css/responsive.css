@@ -1,0 +1,808 @@
+/* =====================================================
+   ECOBAZAR – RESPONSIVE STYLESHEET
+   Breakpoints: 1199px, 991px, 767px, 575px
+   ===================================================== */
+
+/* ---------- Laptop (max 1199px) ---------- */
+@media (max-width: 1199px) {
+
+    .slide {
+        padding: 20px 60px;
+    }
+
+    .slide-text h1 {
+        font-size: 34px;
+    }
+
+    .grid-5 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ---------- Tablet (max 991px) ---------- */
+@media (max-width: 991px) {
+
+    /* Hamburger shows, desktop navbar hides */
+    .menu-btn {
+        display: flex;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .search-box {
+        display: none;
+    }
+
+    .search-icon {
+        display: block;
+    }
+
+    .header-inner {
+        justify-content: flex-start;
+    }
+
+    .header-icons {
+        margin-left: auto;
+    }
+
+    /* Hero */
+    .slide {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 16px;
+        padding: 30px 50px 50px;
+    }
+
+    .slide-img {
+        flex: none;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .slide-text {
+        flex: none;
+    }
+
+    /* Features */
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .feature:nth-child(2) {
+        border-right: 0;
+    }
+
+    .feature:nth-child(-n+2) {
+        border-bottom: 1px solid var(--border);
+    }
+
+    /* Grids */
+    .grid-4,
+    .grid-5 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .promo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .promo {
+        min-height: 180px;
+    }
+
+    /* Deal band */
+    .deal-img-left,
+    .deal-img-right {
+        height: 160px;
+    }
+
+    .deal-center h2 {
+        font-size: 22px;
+    }
+
+    /* Testimonials / news */
+    .testimonial-grid,
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .testimonial:nth-child(3) {
+        display: none;
+    }
+
+    .news-card:nth-child(3) {
+        display: none;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ---------- Mobile (max 767px) ---------- */
+@media (max-width: 767px) {
+
+    .topbar-inner > span:first-child {
+        display: none;
+    }
+
+    .topbar-inner {
+        justify-content: flex-end;
+    }
+
+    .section-title {
+        font-size: 22px;
+    }
+
+    .slide-text h1 {
+        font-size: 28px;
+    }
+
+    .arrow-btn {
+        display: none;
+    }
+
+    .grid-4,
+    .grid-5 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Deal band: hide the side images, keep text */
+    .deal-img-left {
+        display: none;
+    }
+
+    .deal-inner {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .deal-center {
+        padding-bottom: 10px;
+    }
+
+    .deal-img-right {
+        height: 150px;
+    }
+
+    .video-banner img {
+        height: 260px;
+    }
+
+    .newsletter-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .newsletter-form {
+        width: 100%;
+        flex: none;
+    }
+
+    .suggest-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-bg {
+        padding-top: 40px;
+    }
+
+    .footer-bottom {
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Newsletter ad popup: image on top, text below */
+    .ad-modal {
+        flex-direction: column;
+        gap: 0;
+        padding: 4px;
+    }
+
+    .ad-image {
+        flex: none;
+        width: 100%;
+    }
+
+    .ad-image img {
+        height: 210px;
+        object-position: center 55%;
+    }
+
+    .ad-modal .modal-x {
+        background: #fff;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+    }
+
+    .ad-content {
+        padding: 20px 14px 14px;
+    }
+
+    .ad-content h2 {
+        font-size: 22px;
+    }
+}
+
+/* ---------- Small mobile (max 575px) ---------- */
+@media (max-width: 575px) {
+
+    .logo {
+        font-size: 20px;
+        white-space: nowrap;
+    }
+
+    .cart-text {
+        display: none;
+    }
+
+    /* 6 items in one row (menu, logo, 4 icons): keep them small */
+    .header-inner {
+        gap: 8px;
+    }
+
+    .header-icons {
+        gap: 12px;
+    }
+
+    .icon-btn,
+    .cart-icon {
+        font-size: 19px;
+    }
+
+    .theme-btn {
+        font-size: 18px;
+    }
+
+    .slide {
+        padding: 24px 20px 46px;
+    }
+
+    .slide-text h1 {
+        font-size: 24px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .feature {
+        flex-direction: row;
+        align-items: center;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .feature:last-child {
+        border-bottom: 0;
+    }
+
+    .testimonial-grid,
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial:nth-child(2) {
+        display: none;
+    }
+
+    .news-card:nth-child(2) {
+        display: none;
+    }
+
+    .promo {
+        min-height: 170px;
+    }
+
+    .promo-text h3 {
+        font-size: 18px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-about {
+        grid-column: 1 / -1;
+    }
+
+    .card {
+        padding: 10px;
+    }
+
+    .card-img {
+        height: 120px;
+    }
+
+    .card-img img {
+        max-height: 110px;
+    }
+}
+
+
+/* =====================================================
+   CATEGORY PAGE (categories.html)
+   ===================================================== */
+
+/* ---------- Laptop (max 1199px) ---------- */
+@media (max-width: 1199px) {
+
+    .shop-layout {
+        grid-template-columns: 210px 1fr;
+        gap: 18px;
+    }
+
+    .filter-btn {
+        margin-right: 134px;
+    }
+}
+
+/* ---------- Tablet (max 991px) ---------- */
+@media (max-width: 991px) {
+
+    .shop-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-btn {
+        margin-right: 0;
+    }
+
+    /* Sidebar becomes a panel that slides in from the left */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        width: 290px;
+        max-width: 85vw;
+        height: 100%;
+        padding: 0 20px 20px;
+        overflow-y: auto;
+        background: #fff;
+        transform: translateX(-100%);
+        transition: transform 0.35s ease;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        margin: 0 -20px 16px;
+        padding: 16px 20px;
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-head button {
+        font-size: 18px;
+        color: var(--muted);
+    }
+
+    .filter-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 90;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s;
+    }
+
+    .filter-overlay.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .shop-layout.no-sidebar .sidebar {
+        display: block;
+    }
+
+    .quick-modal {
+        gap: 16px;
+    }
+
+    .news-band-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* ---------- Mobile (max 767px) ---------- */
+@media (max-width: 767px) {
+
+    .page-banner {
+        height: 80px;
+    }
+
+    .shop-grid,
+    .shop-layout.no-sidebar .shop-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .shop-top {
+        flex-wrap: wrap;
+    }
+
+    .result-count {
+        width: 100%;
+        margin-left: 0;
+        justify-content: space-between;
+    }
+
+    .news-band-right {
+        width: 100%;
+    }
+
+    .news-band .newsletter-form {
+        flex: 1 1 100%;
+    }
+}
+
+/* ---------- Small mobile (max 575px) ---------- */
+@media (max-width: 575px) {
+
+    .shop-grid {
+        gap: 8px;
+    }
+
+    .shop-grid .card-img {
+        height: 120px;
+    }
+
+    .shop-grid .card-img img {
+        max-height: 105px;
+    }
+
+    .card-price {
+        font-size: 12px;
+    }
+
+    .quick-modal {
+        grid-template-columns: 1fr;
+        max-height: 88vh;
+        overflow-y: auto;
+        padding: 18px;
+    }
+
+    .quick-img img {
+        max-height: 170px;
+    }
+
+    .pagination button {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+
+/* =====================================================
+   PRODUCT PAGE (product.html)
+   ===================================================== */
+
+/* ---------- Laptop (max 1199px) ---------- */
+@media (max-width: 1199px) {
+
+    .pd-grid {
+        gap: 28px;
+    }
+
+    .related-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ---------- Tablet (max 991px) ---------- */
+@media (max-width: 991px) {
+
+    .pd-grid,
+    .desc-grid,
+    .feedback-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pd-grid {
+        gap: 20px;
+    }
+
+    .main-img {
+        height: 320px;
+        cursor: default;
+    }
+
+    .related-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tab-nav {
+        gap: 20px;
+        overflow-x: auto;
+        padding: 0 16px;
+    }
+
+    .tab-nav button {
+        white-space: nowrap;
+    }
+}
+
+/* ---------- Mobile (max 767px) ---------- */
+@media (max-width: 767px) {
+
+    /* Thumbnails go under the big image */
+    .gallery {
+        flex-direction: column-reverse;
+        gap: 12px;
+    }
+
+    .thumbs {
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .thumb-list {
+        flex-direction: row;
+    }
+
+    .thumb-arrow {
+        transform: rotate(-90deg);
+    }
+
+    .thumb-arrow.down {
+        transform: rotate(90deg);
+    }
+
+    .main-img {
+        height: 260px;
+    }
+
+    .main-img img {
+        max-height: 240px;
+    }
+
+    .pd-title-row h1 {
+        font-size: 22px;
+    }
+
+    .info-table th {
+        width: 120px;
+    }
+}
+
+/* ---------- Small mobile (max 575px) ---------- */
+@media (max-width: 575px) {
+
+    .pd-buy {
+        flex-wrap: wrap;
+    }
+
+    .add-cart-btn {
+        flex: 1 1 100%;
+        order: 3;
+    }
+
+    .qty-big {
+        order: 1;
+    }
+
+    .wish-btn {
+        order: 2;
+        margin-left: auto;
+    }
+
+    .info-box {
+        grid-template-columns: 1fr;
+    }
+
+    .related-grid {
+        gap: 8px;
+    }
+
+    .related-grid .card-img {
+        height: 120px;
+    }
+}
+
+
+/* =====================================================
+   WISHLIST + CART PAGES (wishlist.html, cart.html)
+   ===================================================== */
+
+/* ---------- Tablet (max 991px) ---------- */
+@media (max-width: 991px) {
+
+    .cart-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .cart-total {
+        position: static;
+    }
+}
+
+/* ---------- Mobile (max 767px) ---------- */
+@media (max-width: 767px) {
+
+    .page-title {
+        font-size: 22px;
+    }
+
+    /* The table header is hidden, every row becomes a small card */
+    .list-head {
+        display: none;
+    }
+
+    .list-row {
+        position: relative;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .cell-product {
+        grid-column: 1 / -1;
+        padding-right: 30px;
+    }
+
+    .cell-actions {
+        grid-column: 1 / -1;
+        justify-content: space-between;
+    }
+
+    /* Cart: remove button goes to the top right corner */
+    .cart-grid .remove-btn {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+    }
+
+    .list-row [data-label]::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 2px;
+        font-size: 10px;
+        text-transform: uppercase;
+        color: var(--muted);
+    }
+
+    .coupon-box {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+}
+
+/* ---------- Small mobile (max 575px) ---------- */
+@media (max-width: 575px) {
+
+    .list-actions {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+
+/* ---------- Very small phones (max 359px) ---------- */
+@media (max-width: 359px) {
+
+    .header-inner {
+        gap: 4px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .logo {
+        font-size: 17px;
+        gap: 3px;
+    }
+
+    .header-icons {
+        gap: 8px;
+    }
+
+    .icon-btn,
+    .cart-icon {
+        font-size: 17px;
+    }
+}
+
+
+/* Product page gallery on very small phones */
+@media (max-width: 359px) {
+
+    .thumb {
+        width: 48px;
+        height: 48px;
+    }
+
+    .thumb-list {
+        gap: 6px;
+    }
+
+    .thumbs {
+        gap: 4px;
+    }
+}
+
+
+/* Home page product tabs: wrap on small phones */
+@media (max-width: 575px) {
+
+    .tabs {
+        flex-wrap: wrap;
+        row-gap: 6px;
+    }
+}
+
+
+/* =====================================================
+   CHECKOUT PAGE (checkout.html)
+   ===================================================== */
+
+/* ---------- Tablet (max 991px) ---------- */
+@media (max-width: 991px) {
+
+    .checkout-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    /* Order summary goes below the form */
+    .order-summary {
+        position: static;
+    }
+
+    .done-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ---------- Mobile (max 767px) ---------- */
+@media (max-width: 767px) {
+
+    .checkout {
+        padding-top: 24px;
+    }
+
+    .co-title {
+        font-size: 18px;
+    }
+
+    /* Every field gets its own row (two columns for the small ones) */
+    .span-2,
+    .span-3 {
+        grid-column: span 6;
+    }
+
+    .order-done h2 {
+        font-size: 20px;
+    }
+}
+
+/* ---------- Small mobile (max 575px) ---------- */
+@media (max-width: 575px) {
+
+    .order-summary {
+        padding: 16px;
+    }
+
+    .ship-box {
+        padding: 14px;
+    }
+}

@@ -1,0 +1,552 @@
+/* =====================================================
+   ECOBAZAR – CATEGORY PAGE STYLES (categories.html)
+   Loaded after style.css. Mobile rules are in responsive.css
+   ===================================================== */
+
+/* ---------- 1. Page banner + breadcrumb ---------- */
+.page-banner {
+    height: 110px;
+    display: flex;
+    align-items: center;
+    background:
+        linear-gradient(90deg, #1b1b1b 25%, rgba(27, 27, 27, 0.2) 70%),
+        url('../images/category-banner.jpg') right center / auto 100% no-repeat,
+        #1b1b1b;
+    color: #fff;
+}
+
+.page-banner .container {
+    width: 100%;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: #bbb;
+}
+
+.breadcrumb a:hover {
+    color: #fff;
+}
+
+.breadcrumb b {
+    color: #5bd65f;
+    font-weight: 500;
+}
+
+
+/* ---------- 2. Shop layout ---------- */
+.shop {
+    padding: 22px 0 50px;
+}
+
+.shop-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.filter-btn {
+    background: var(--green);
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 40px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-right: 160px;
+}
+
+.filter-btn:hover {
+    background: var(--green-dark);
+}
+
+.sort-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.sort-box select {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 12px;
+    background: var(--surface);
+    outline: 0;
+    cursor: pointer;
+}
+
+.sort-box select:focus {
+    border-color: var(--green);
+}
+
+.result-count {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 12px;
+}
+
+.result-count b {
+    font-weight: 600;
+}
+
+.clear-btn {
+    color: var(--red);
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+.shop-layout {
+    display: grid;
+    grid-template-columns: 235px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+/* Sidebar hidden by the Filter button (desktop) */
+.shop-layout.no-sidebar {
+    grid-template-columns: 1fr;
+}
+
+.shop-layout.no-sidebar .sidebar {
+    display: none;
+}
+
+.shop-layout.no-sidebar .shop-grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+
+/* ---------- 3. Sidebar ---------- */
+.sidebar-head,
+.filter-overlay {
+    display: none;
+}
+
+.side-box {
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+.side-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.side-title.plain {
+    cursor: default;
+}
+
+.side-title span {
+    transition: 0.3s;
+    color: var(--muted);
+}
+
+.side-box.collapsed .side-title span {
+    transform: rotate(180deg);
+}
+
+.side-box.collapsed .side-body {
+    display: none;
+}
+
+/* Category list */
+.cat-list li {
+    margin-bottom: 9px;
+}
+
+.cat-list label,
+.rating-list label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.cat-list label:hover,
+.cat-list input:checked + .cat-name {
+    color: var(--green);
+}
+
+.cat-list .count {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.cat-list input,
+.rating-list input {
+    accent-color: var(--green);
+    width: 14px;
+    height: 14px;
+}
+
+/* Price slider (two handles) */
+.range {
+    position: relative;
+    height: 20px;
+    margin: 8px 0 10px;
+}
+
+.range-track {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--border);
+    border-radius: 4px;
+}
+
+.range-fill {
+    position: absolute;
+    height: 100%;
+    background: var(--green);
+    border-radius: 4px;
+}
+
+.range input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    margin: 0;
+    background: none;
+    pointer-events: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.range input::-webkit-slider-runnable-track {
+    background: none;
+}
+
+.range input::-moz-range-track {
+    background: none;
+}
+
+.range input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    pointer-events: auto;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 3px solid var(--green);
+    cursor: pointer;
+}
+
+.range input::-moz-range-thumb {
+    pointer-events: auto;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 3px solid var(--green);
+    cursor: pointer;
+}
+
+.price-label {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.price-label b {
+    color: var(--text);
+    font-weight: 500;
+}
+
+/* Rating */
+.rating-list label {
+    margin-bottom: 9px;
+}
+
+.rating-list .stars i {
+    font-style: normal;
+    color: #ccc;
+}
+
+/* Tags */
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tag-chip {
+    padding: 5px 12px;
+    background: var(--soft);
+    border-radius: 30px;
+    font-size: 11px;
+    transition: 0.2s;
+}
+
+.tag-chip:hover {
+    background: var(--tint);
+}
+
+.tag-chip.active {
+    background: var(--green);
+    color: #fff;
+}
+
+/* Discount banner */
+.discount-box {
+    margin-bottom: 22px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--soft);
+    text-align: center;
+}
+
+.discount-text {
+    padding: 16px 10px 10px;
+}
+
+.discount-text h3 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.discount-text h3 b {
+    color: var(--orange);
+    font-weight: 600;
+}
+
+.discount-text p {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.discount-text a {
+    display: inline-block;
+    margin-top: 6px;
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.discount-box img {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+}
+
+/* Sale products */
+.sale-list {
+    display: grid;
+    gap: 8px;
+}
+
+.sale-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.sale-item:hover {
+    border-color: var(--green);
+}
+
+.sale-item img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.sale-item h6 {
+    font-size: 11px;
+    font-weight: 400;
+}
+
+.sale-item:hover h6 {
+    color: var(--green);
+}
+
+.sale-item .price {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.sale-item .price s {
+    color: #aaa;
+    font-weight: 400;
+    font-size: 10px;
+}
+
+
+/* ---------- 4. Product grid (3 cards per row) ---------- */
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    min-height: 300px;
+}
+
+.shop-grid .card {
+    margin: 0;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+}
+
+.shop-grid .card-img {
+    height: 170px;
+}
+
+.shop-grid .card-img img {
+    max-height: 150px;
+}
+
+.shop-grid .card.out-of-stock img {
+    opacity: 0.6;
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    padding: 70px 20px;
+    text-align: center;
+    color: var(--muted);
+}
+
+.empty-state h3 {
+    color: var(--text);
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+
+/* ---------- 5. Pagination ---------- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 30px;
+}
+
+.pagination button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--soft);
+    font-size: 12px;
+    color: var(--text-soft);
+    transition: 0.2s;
+}
+
+.pagination button:hover:not(:disabled) {
+    background: var(--tint);
+}
+
+.pagination button.active {
+    background: var(--green);
+    color: #fff;
+}
+
+.pagination button:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.pagination .dots-text {
+    color: var(--muted);
+}
+
+
+/* ---------- 6. Quick view popup ---------- */
+.quick-modal {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: min(700px, 94vw);
+    padding: 26px;
+    background: var(--surface);
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    animation: popIn 0.35s ease;
+}
+
+.quick-img {
+    display: grid;
+    place-items: center;
+    background: var(--soft);
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.quick-img img {
+    max-height: 260px;
+    object-fit: contain;
+}
+
+.quick-stock {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    background: var(--tint);
+    color: var(--green);
+    font-size: 11px;
+}
+
+.quick-stock.out {
+    background: var(--tint-red);
+    color: var(--red);
+}
+
+.quick-info h3 {
+    margin: 10px 0 6px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.quick-price {
+    margin: 10px 0;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--green);
+}
+
+.quick-price s {
+    font-size: 14px;
+    font-weight: 400;
+    color: #aaa;
+}
+
+.quick-cat {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.quick-buy {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.quick-buy .btn-green {
+    flex: 1;
+    padding: 11px;
+    text-align: center;
+}

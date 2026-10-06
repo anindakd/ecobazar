@@ -1,0 +1,391 @@
+/* =====================================================
+   ECOBAZAR – WISHLIST + CART STYLES (wishlist.html, cart.html)
+   Loaded after style.css + category.css.
+   Mobile rules are in responsive.css
+   ===================================================== */
+
+/* ---------- 1. Page title + shared box ---------- */
+.list-section {
+    padding: 30px 0 60px;
+}
+
+.page-title {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.list-box {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+}
+
+/* Table header + rows (made with CSS grid, so they stack nicely on mobile) */
+.list-head,
+.list-row {
+    display: grid;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+}
+
+.list-head {
+    border-bottom: 1px solid var(--border);
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.list-row {
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+    animation: fadeIn 0.3s;
+}
+
+.wish-grid {
+    grid-template-columns: 2.4fr 1.4fr 1.1fr 1.8fr;
+}
+
+.cart-grid {
+    grid-template-columns: 2.4fr 1fr 1.4fr 1fr 30px;
+}
+
+.cell-product {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.cell-product img {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+}
+
+.cell-product a:hover {
+    color: var(--green);
+}
+
+.price-text s {
+    color: #aaa;
+    font-size: 11px;
+}
+
+.price-text b {
+    font-weight: 500;
+}
+
+.cell-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 14px;
+}
+
+/* ---------- 2. Buttons + badges ---------- */
+.status {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+}
+
+.status.in {
+    background: var(--tint);
+    color: var(--green-text);
+}
+
+.status.out {
+    background: var(--tint-red);
+    color: var(--red);
+}
+
+.pill-btn {
+    padding: 9px 22px;
+    border-radius: 40px;
+    background: var(--green);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.pill-btn:hover:not(:disabled) {
+    background: var(--green-dark);
+}
+
+.pill-btn:disabled {
+    background: var(--soft);
+    color: #aaa;
+    cursor: not-allowed;
+}
+
+.remove-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--soft);
+    color: var(--text-soft);
+    font-size: 9px;
+    transition: 0.2s;
+}
+
+.remove-btn:hover {
+    background: var(--red);
+    color: #fff;
+}
+
+.gray-btn {
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 40px;
+    background: var(--soft);
+    color: var(--text-soft);
+    font-size: 11px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.gray-btn:hover {
+    background: var(--green);
+    color: #fff;
+}
+
+/* ---------- 3. Wishlist: share row ---------- */
+.list-share {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 20px;
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.list-share button {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 11px;
+    color: var(--text-soft);
+    transition: 0.2s;
+}
+
+.list-share button.on,
+.list-share button:hover {
+    background: var(--green);
+    color: #fff;
+}
+
+/* ---------- 4. Cart layout ---------- */
+.cart-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 330px;
+    gap: 20px;
+    align-items: start;
+}
+
+.qty-small {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.qty-small button {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--soft);
+    font-size: 14px;
+    line-height: 1;
+}
+
+.qty-small button:hover {
+    background: var(--green);
+    color: #fff;
+}
+
+.qty-small span {
+    min-width: 30px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.list-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 20px;
+}
+
+.gray-btn.highlight {
+    background: var(--green);
+    color: #fff;
+}
+
+/* Coupon */
+.coupon-box {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+    padding: 14px 20px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+    font-size: 14px;
+}
+
+.coupon-box b {
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.coupon-form {
+    display: flex;
+    flex: 1;
+    border: 1px solid var(--border);
+    border-radius: 40px;
+    overflow: hidden;
+}
+
+.coupon-form input {
+    flex: 1;
+    min-width: 0;
+    padding: 0 16px;
+    border: 0;
+    outline: 0;
+    font-family: inherit;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.coupon-form input::placeholder {
+    text-transform: none;
+}
+
+.coupon-form button {
+    padding: 12px 24px;
+    border-radius: 40px;
+    background: #2c2c2c;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.coupon-form button:hover {
+    background: var(--green);
+}
+
+.coupon-note {
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.coupon-note.ok {
+    color: var(--green-text);
+}
+
+.coupon-note.error {
+    color: var(--red);
+}
+
+.coupon-note button {
+    margin-left: 6px;
+    color: var(--red);
+    font-size: 11px;
+    text-decoration: underline;
+}
+
+/* Cart total card */
+.cart-total {
+    position: sticky;
+    top: 90px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+}
+
+.cart-total h3 {
+    margin-bottom: 14px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+}
+
+.total-row span {
+    color: var(--muted);
+}
+
+.total-row b {
+    font-weight: 500;
+}
+
+.total-row b.discount {
+    color: var(--green);
+}
+
+.total-row.final {
+    border-bottom: 0;
+}
+
+.total-row.final span {
+    color: var(--text);
+}
+
+.total-row.final b {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.checkout-btn {
+    width: 100%;
+    margin-top: 8px;
+    padding: 13px;
+    border-radius: 40px;
+    background: var(--green);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.checkout-btn:hover {
+    background: var(--green-dark);
+}
+
+/* ---------- 5. Empty state ---------- */
+.empty-box {
+    padding: 60px 20px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+    text-align: center;
+}
+
+.empty-icon {
+    margin-bottom: 10px;
+    font-size: 48px;
+    color: var(--green);
+}
+
+.empty-box h3 {
+    margin-bottom: 6px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.empty-box p {
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: var(--muted);
+}

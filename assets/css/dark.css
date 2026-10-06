@@ -1,0 +1,99 @@
+/* =====================================================
+   ECOBAZAR – DARK MODE (loaded last on every page)
+   The page switches to dark when <html> has data-theme="dark".
+   The colours come from the variables at the top of style.css,
+   so here we only change those variables.
+   ===================================================== */
+
+/* ---------- 1. Dark colours ---------- */
+[data-theme="dark"] {
+    color-scheme: dark;
+
+    --page: #0f1411;
+    --surface: #1a201b;
+    --soft: #252c27;
+    --pale: #151b17;
+
+    --text: #e6ebe7;
+    --text-soft: #b9c2bb;
+    --muted: #9ba59d;
+    --heading: #e8f3e9;
+
+    --border: #2d352f;
+    --border-soft: #262d28;
+
+    --tint: rgba(0, 178, 7, 0.18);
+    --tint-red: rgba(234, 75, 72, 0.18);
+    --green-text: #6fd873;
+}
+
+/* ---------- 2. Parts that stay light ----------
+   The hero slider and the "Deal of the Month" band use photos
+   with a light background, so they keep the light colours. */
+[data-theme="dark"] .slider,
+[data-theme="dark"] .deal {
+    --page: #fff;
+    --surface: #fff;
+    --soft: #f2f2f2;
+    --pale: #edf2ee;
+
+    --text: #1a1a1a;
+    --text-soft: #666;
+    --muted: #808080;
+    --heading: #002603;
+
+    --border: #e6e6e6;
+    --tint: #dff5e0;
+}
+
+[data-theme="dark"] .slider {
+    background: #fff;
+}
+
+/* ---------- 3. Product photos have a white background,
+   so they sit on a small white tile ---------- */
+[data-theme="dark"] .card-img,
+[data-theme="dark"] .main-img,
+[data-theme="dark"] .thumb,
+[data-theme="dark"] .quick-img,
+[data-theme="dark"] .suggest-grid img,
+[data-theme="dark"] .sale-item img,
+[data-theme="dark"] .cell-product img {
+    background: #fff;
+    border-radius: 6px;
+}
+
+[data-theme="dark"] .suggest-grid img,
+[data-theme="dark"] .sale-item img,
+[data-theme="dark"] .cell-product img {
+    padding: 3px;
+}
+
+/* ---------- 4. Small fixes ---------- */
+[data-theme="dark"] .toast {
+    background: #2e3a30;
+    border: 1px solid var(--border);
+}
+
+[data-theme="dark"] .pd-meta a,
+[data-theme="dark"] .tab-nav button.active {
+    color: var(--text);
+}
+
+[data-theme="dark"] .pill-btn:disabled,
+[data-theme="dark"] .add-cart-btn:disabled {
+    background: var(--soft);
+    color: var(--muted);
+}
+
+/* Smooth change between light and dark */
+body,
+.header,
+.card,
+.list-box,
+.sidebar {
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* ---------- 5. The toggle button in the header ---------- */
+/* the switch itself is styled in icons.css */
